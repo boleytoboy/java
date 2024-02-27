@@ -1,4 +1,4 @@
-package opendota.openDotaApi;
+package opendota.opendotaapi;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;

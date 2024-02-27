@@ -1,6 +1,6 @@
 package opendota.service;
 
-import opendota.openDotaApi.OpenDotaApi;
+import opendota.opendotaapi.OpenDotaApi;
 import org.springframework.stereotype.Service;
 
 @Service
