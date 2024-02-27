@@ -12,7 +12,7 @@ public class Controller {
     public Controller(DotaService service) {
         this.service = service;
     }
-    @GetMapping("/info")
+    @GetMapping(value="/info", produces="application/json")
     public ResponseEntity<String> playerData (@RequestParam("id") String accountId) {
         return ResponseEntity.ok(service.getAccountData(accountId));
     }
