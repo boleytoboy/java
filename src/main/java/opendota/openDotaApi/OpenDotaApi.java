@@ -4,9 +4,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 @Component
-public class openDotaApi {
+public class OpenDotaApi {
     RestTemplate restTemplate;
-    public openDotaApi() {
+    public OpenDotaApi() {
         restTemplate = new RestTemplate();
     }
     public String fetchPlayerData(String accountId) {

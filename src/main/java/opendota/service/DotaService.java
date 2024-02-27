@@ -1,12 +1,12 @@
 package opendota.service;
 
-import opendota.openDotaApi.openDotaApi;
+import opendota.openDotaApi.OpenDotaApi;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DotaService {
-    openDotaApi api;
-    public DotaService(openDotaApi api) {
+    OpenDotaApi api;
+    public DotaService(OpenDotaApi api) {
             this.api = api;
     }
     public String getAccountData(String accountId) {
