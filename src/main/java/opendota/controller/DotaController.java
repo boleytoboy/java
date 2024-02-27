@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Controller {
+public class DotaController {
     private final DotaService service;
-    public Controller(DotaService service) {
+    public DotaController(DotaService service) {
         this.service = service;
     }
     @GetMapping(value="/info", produces="application/json")
