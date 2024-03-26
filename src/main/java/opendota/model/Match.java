@@ -1,21 +1,19 @@
-package opendota.entity;
+package opendota.model;
 
 import lombok.*;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Set;
 
 @Getter
 @Setter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Entity
 @Table(name = "matches")
 public class Match {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long matchId;
-    private int duration;
+    private Integer duration;
 
     @ManyToMany
     @JoinTable(
@@ -25,11 +23,4 @@ public class Match {
     )
     private Set<Player> players;
 
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
 }
