@@ -17,8 +17,7 @@ public class Match {
 
     @ManyToMany(cascade = {
             CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REMOVE
+            CascadeType.PERSIST
     })
     @JoinTable(
             name = "match_player",
@@ -27,4 +26,7 @@ public class Match {
     )
     private Set<Player> players;
 
+    public void addPlayer(Player player){
+        players.add(player);
+    }
 }

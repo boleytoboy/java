@@ -29,12 +29,12 @@ public class PlayerController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePlayer(@PathVariable("id") Long accountId) {
         playerService.deletePlayerById(accountId);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
     @PutMapping("/{id}")
     public ResponseEntity<Void> updatePlayer(@PathVariable("id") Long accountId, @RequestBody Player player) {
         playerService.updatePlayer(accountId, player);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 
 }

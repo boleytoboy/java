@@ -29,11 +29,16 @@ public class MatchController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMatch(@PathVariable("id") Long matchId) {
         matchService.deleteMatchById(matchId);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateMatch(@PathVariable("id") Long matchId, @RequestBody Match match) {
         matchService.updateMatch(matchId, match);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
+    }
+    @PostMapping("/{matchId}/players/{playerId}")
+    public ResponseEntity<Void> addPlayer(@PathVariable Long matchId, @PathVariable Long playerId) {
+        matchService.addPlayer(matchId, playerId);
+        return ResponseEntity.ok().build();
     }
 }

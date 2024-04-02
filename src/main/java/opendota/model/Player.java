@@ -20,4 +20,8 @@ public class Player {
     @ManyToMany(mappedBy = "players")
     private Set<Match> matches;
 
+
+    public void addMatch(Match match){
+        matches.add(match);
+    }
 }

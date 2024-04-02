@@ -1,7 +1,9 @@
 package opendota.service;
 
+import opendota.model.Player;
 import opendota.model.Match;
 import opendota.repository.MatchRepository;
+import opendota.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +12,10 @@ import java.util.*;
 @Service
 public class MatchService {
     private final MatchRepository matchRepository;
-
-    public MatchService(MatchRepository matchRepository) {
+    private final PlayerRepository playerRepository;
+    public MatchService(MatchRepository matchRepository, PlayerRepository playerRepository) {
         this.matchRepository = matchRepository;
+        this.playerRepository = playerRepository;
     }
 
     public Optional<Match> findMatchById(Long matchId) {
@@ -32,6 +35,13 @@ public class MatchService {
             match.setDuration(updatedMatch.getDuration());
             matchRepository.save(match);
         }
+    }
+    public void addPlayer(Long matchId, Long playerId) {
+        Player player = playerRepository.findById(playerId).orElseThrow();
+        Match match = matchRepository.findById(matchId).orElseThrow(() -> new RuntimeException("match not found"));
+        player.addMatch(match);
+        match.addPlayer(player);
+        matchRepository.save(match);
     }
 }
 
