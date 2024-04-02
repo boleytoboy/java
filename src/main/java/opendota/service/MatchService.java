@@ -41,7 +41,6 @@ public class MatchService {
         match.addPlayer(player);
         matchRepository.save(match);
     }
-
     public void removePlayerFromMatch(Long matchId, Long playerId) {
         Optional<Match> matchOptional = matchRepository.findById(matchId);
         if (matchOptional.isPresent()) {

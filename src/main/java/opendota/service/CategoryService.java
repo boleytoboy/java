@@ -2,13 +2,10 @@ package opendota.service;
 
 import opendota.model.Category;
 import opendota.model.Match;
-import opendota.model.Player;
 import opendota.repository.CategoryRepository;
 import opendota.repository.MatchRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class CategoryService {
@@ -25,6 +22,11 @@ public class CategoryService {
         return categoryRepository.save(category);
     }
     public void deleteCategoryById(Long categoryId) {
+        Category category = categoryRepository.findById(categoryId).orElseThrow();
+        for (Match match : category.getMatches()) {
+            match.setCategory(null);
+        }
+        matchRepository.saveAll(category.getMatches());
         categoryRepository.deleteById(categoryId);
     }
     public void updateCategory(Long categoryId, Category updatedCategory) {
@@ -46,9 +48,9 @@ public class CategoryService {
         Optional<Category> categoryOptional = categoryRepository.findById(categoryId);
         if (categoryOptional.isPresent()) {
             Category category = categoryOptional.get();
-            Set<Match> matches = category.getMatches();
-            matches.removeIf(match -> match.getMatchId().equals(matchId));
-            categoryRepository.save(category);
+            Match match = matchRepository.findById(matchId).orElseThrow();
+            match.setCategory(null);
+            matchRepository.save(match);
         }
     }
 }

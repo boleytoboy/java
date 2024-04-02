@@ -17,15 +17,12 @@ public class Match {
     private Integer duration;
 
     @JsonIgnoreProperties({"matches"})
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
     @JsonIgnoreProperties({"matches"})
-    @ManyToMany(cascade = {
-            CascadeType.MERGE,
-            CascadeType.PERSIST
-    })
+    @ManyToMany(cascade = { CascadeType.PERSIST })
     @JoinTable(
             name = "match_player",
             joinColumns = @JoinColumn(name = "match_id"),

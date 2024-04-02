@@ -17,7 +17,7 @@ public class Category {
     private String name;
 
     @JsonIgnoreProperties({"players", "category"})
-    @OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, mappedBy = "category")
+    @OneToMany( mappedBy = "category", cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
     private Set<Match> matches;
 
     public void addMatch(Match match){
