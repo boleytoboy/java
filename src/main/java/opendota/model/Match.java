@@ -15,7 +15,11 @@ public class Match {
     private Long matchId;
     private Integer duration;
 
-    @ManyToMany
+    @ManyToMany(cascade = {
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REMOVE
+    })
     @JoinTable(
             name = "match_player",
             joinColumns = @JoinColumn(name = "match_id"),

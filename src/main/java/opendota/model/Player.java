@@ -1,5 +1,6 @@
 package opendota.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import jakarta.persistence.*;
 import java.util.Set;
@@ -13,9 +14,10 @@ public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long accountId;
-    private String personalName;
 
-    @ManyToMany
+    private String personalName;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "players")
     private Set<Match> matches;
 
 }
