@@ -41,4 +41,9 @@ public class MatchController {
         matchService.addPlayer(matchId, playerId);
         return ResponseEntity.ok().build();
     }
+    @DeleteMapping("/{matchId}/players/{playerId}")
+    public ResponseEntity<Void> removePlayerFromMatch(@PathVariable Long matchId, @PathVariable Long playerId) {
+        matchService.removePlayerFromMatch(matchId, playerId);
+        return ResponseEntity.ok().build();
+    }
 }

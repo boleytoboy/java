@@ -21,6 +21,7 @@ public class Match {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @JsonIgnoreProperties({"matches"})
     @ManyToMany(cascade = {
             CascadeType.MERGE,
             CascadeType.PERSIST

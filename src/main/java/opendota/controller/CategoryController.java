@@ -36,11 +36,14 @@ public class CategoryController {
         categoryService.updateCategory(categoryId, category);
         return ResponseEntity.ok().build();
     }
-
     @PostMapping("/{categoryId}/matches/{matchId}")
     public ResponseEntity<Void> addMatch(@PathVariable Long matchId, @PathVariable Long categoryId) {
         categoryService.addMatch(matchId, categoryId);
         return ResponseEntity.ok().build();
     }
-
+    @DeleteMapping("/{categoryId}/matches/{matchId}")
+    public ResponseEntity<Void> removeMatchFromCategory(@PathVariable Long matchId, @PathVariable Long categoryId) {
+        categoryService.removeMatchFromCategory(matchId, categoryId);
+        return ResponseEntity.ok().build();
+    }
 }

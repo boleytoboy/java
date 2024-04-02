@@ -36,5 +36,4 @@ public class PlayerController {
         playerService.updatePlayer(accountId, player);
         return ResponseEntity.ok().build();
     }
-
 }

@@ -5,7 +5,6 @@ import lombok.*;
 import jakarta.persistence.*;
 import java.util.Set;
 
-
 @Getter
 @Setter
 @RequiredArgsConstructor
@@ -17,7 +16,7 @@ public class Player {
     private Long accountId;
     private String personalName;
 
-    @JsonIgnoreProperties({"players"})
+    @JsonIgnoreProperties({"players", "matches"})
     @ManyToMany(mappedBy = "players")
     private Set<Match> matches;
 
