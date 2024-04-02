@@ -10,15 +10,15 @@ import java.util.Set;
 @Setter
 @RequiredArgsConstructor
 @Entity
-@Table(name = "players")
-public class Player {
+@Table(name = "category")
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long accountId;
-    private String personalName;
+    private Long categoryId;
+    private String name;
 
-    @JsonIgnoreProperties({"players"})
-    @ManyToMany(mappedBy = "players")
+    @JsonIgnoreProperties({"players", "category"})
+    @OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, mappedBy = "category")
     private Set<Match> matches;
 
     public void addMatch(Match match){

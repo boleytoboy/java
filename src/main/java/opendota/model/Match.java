@@ -1,5 +1,6 @@
 package opendota.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import jakarta.persistence.*;
 import java.util.Set;
@@ -14,6 +15,11 @@ public class Match {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long matchId;
     private Integer duration;
+
+    @JsonIgnoreProperties({"matches"})
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @ManyToMany(cascade = {
             CascadeType.MERGE,
