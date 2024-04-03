@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/players")
@@ -25,6 +26,11 @@ public class PlayerController {
         return playerService.findPlayerById(accountId)
                 .map(player -> ResponseEntity.ok().body(player))
                 .orElse(ResponseEntity.notFound().build());
+    }
+    @GetMapping("/")
+    public ResponseEntity<List<Player>> getAllPlayers() {
+        List<Player> players = playerService.findAllPlayers();
+        return new ResponseEntity<>(players, HttpStatus.OK);
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePlayer(@PathVariable("id") Long accountId) {

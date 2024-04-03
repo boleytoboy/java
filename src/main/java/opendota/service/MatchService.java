@@ -15,11 +15,9 @@ public class MatchService {
         this.matchRepository = matchRepository;
         this.playerRepository = playerRepository;
     }
-
     public Optional<Match> findMatchById(Long matchId) {
         return matchRepository.findById(matchId);
     }
-
     public Match saveMatch(Match match) {
         return matchRepository.save(match);
     }

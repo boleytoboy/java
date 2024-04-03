@@ -38,4 +38,7 @@ public class PlayerService {
             playerRepository.save(player);
         }
     }
+    public List<Player> findAllPlayers() {
+        return playerRepository.findAll();
+    }
 }
