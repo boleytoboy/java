@@ -28,8 +28,8 @@ public class PlayerController {
                 .orElse(ResponseEntity.notFound().build());
     }
     @GetMapping("/")
-    public ResponseEntity<List<Player>> getAllPlayers() {
-        List<Player> players = playerService.findAllPlayers();
+    public ResponseEntity<List<Player>> findByBeginOfName() {
+        List<Player> players = playerService.findByBeginOfName();
         return new ResponseEntity<>(players, HttpStatus.OK);
     }
     @DeleteMapping("/{id}")

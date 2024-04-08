@@ -1,5 +1,6 @@
 package opendota.service;
 
+import opendota.cache.EntityCache;
 import opendota.model.Player;
 import opendota.model.Match;
 import opendota.repository.MatchRepository;
@@ -11,14 +12,27 @@ import java.util.*;
 public class MatchService {
     private final MatchRepository matchRepository;
     private final PlayerRepository playerRepository;
-    public MatchService(MatchRepository matchRepository, PlayerRepository playerRepository) {
+    private final EntityCache<Integer,Object> cacheMap;
+
+    public MatchService(MatchRepository matchRepository, PlayerRepository playerRepository, EntityCache<Integer, Object> cacheMap) {
         this.matchRepository = matchRepository;
         this.playerRepository = playerRepository;
+        this.cacheMap = cacheMap;
     }
     public Optional<Match> findMatchById(Long matchId) {
-        return matchRepository.findById(matchId);
+        int hashCode = Objects.hash(matchId, 32 * 33);
+        Object cachedData = cacheMap.get(hashCode);
+
+        if (cachedData != null) {
+            return (Optional<Match>) cachedData;
+        } else {
+            Optional<Match> match = matchRepository.findById(matchId);
+            cacheMap.put(hashCode, match);
+            return match;
+        }
     }
     public Match saveMatch(Match match) {
+        cacheMap.clear();
         return matchRepository.save(match);
     }
     public void deleteMatchById(Long matchId) {

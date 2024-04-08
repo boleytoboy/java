@@ -1,24 +1,37 @@
 package opendota.service;
 
+import opendota.cache.EntityCache;
 import opendota.model.Category;
 import opendota.model.Match;
 import opendota.repository.CategoryRepository;
 import opendota.repository.MatchRepository;
 import org.springframework.stereotype.Service;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class CategoryService {
     private final CategoryRepository categoryRepository;
     private final MatchRepository matchRepository;
-    public CategoryService(CategoryRepository categoryRepository, MatchRepository matchRepository) {
+    private final EntityCache<Integer,Object> cacheMap;
+    public CategoryService(CategoryRepository categoryRepository, MatchRepository matchRepository, EntityCache<Integer, Object> cacheMap) {
         this.categoryRepository = categoryRepository;
         this.matchRepository = matchRepository;
+        this.cacheMap = cacheMap;
     }
     public Optional<Category> findCategoryById(Long categoryId) {
-        return categoryRepository.findById(categoryId);
+        int hashCode = Objects.hash(categoryId, 33 * 34);
+        Object cachedData = cacheMap.get(hashCode);
+
+        if (cachedData != null) {
+            return (Optional<Category>) cachedData;
+        } else {
+            Optional<Category> category = categoryRepository.findById(categoryId);
+            cacheMap.put(hashCode, category);
+            return category;
+        }
     }
     public Category saveCategory(Category category){
+        cacheMap.clear();
         return categoryRepository.save(category);
     }
     public void deleteCategoryById(Long categoryId) {

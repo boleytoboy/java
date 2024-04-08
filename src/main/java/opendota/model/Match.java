@@ -30,7 +30,5 @@ public class Match {
     )
     private Set<Player> players;
 
-    public void addPlayer(Player player){
-        players.add(player);
-    }
+    public void addPlayer(Player player){ players.add(player); }
 }
