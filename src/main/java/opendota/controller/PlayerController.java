@@ -27,10 +27,9 @@ public class PlayerController {
                 .map(player -> ResponseEntity.ok().body(player))
                 .orElse(ResponseEntity.notFound().build());
     }
-    @GetMapping("/")
-    public ResponseEntity<List<Player>> findByBeginOfName() {
-        List<Player> players = playerService.findByBeginOfName();
-        return new ResponseEntity<>(players, HttpStatus.OK);
+    @GetMapping("/prefix/{prefix}")
+    public List<Player> getPlayerByPrefix(@PathVariable String prefix) {
+        return playerService.getPlayerByPrefix(prefix);
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePlayer(@PathVariable("id") Long accountId) {

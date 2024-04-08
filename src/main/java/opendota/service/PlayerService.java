@@ -30,6 +30,17 @@ public class PlayerService {
             return player;
         }
     }
+    public List<Player> getPlayerByPrefix(String prefix) {
+        int hashCode = Objects.hash(prefix, 34 * 35);
+        Object cachedData = cacheMap.get(hashCode);
+
+        if(cachedData != null) {
+            return(List<Player>) cachedData;
+        } else {
+            cacheMap.put(hashCode, playerRepository.findByBeginOfName(prefix));
+            return playerRepository.findByBeginOfName(prefix);
+        }
+    }
     public Player savePlayer(Player player) {
         cacheMap.clear();
         player.setAccountId(0L);
@@ -50,8 +61,5 @@ public class PlayerService {
             player.setPersonalName(updatedPlayer.getPersonalName());
             playerRepository.save(player);
         }
-    }
-    public List<Player> findByBeginOfName() {
-        return playerRepository.findAll();
     }
 }
