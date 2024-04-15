@@ -36,9 +36,11 @@ public class MatchService {
         return matchRepository.save(match);
     }
     public void deleteMatchById(Long matchId) {
+        cacheMap.clear();
         matchRepository.deleteById(matchId);
     }
     public void updateMatch(Long matchId, Match updatedMatch) {
+        cacheMap.clear();
         Optional<Match> matchOptional = matchRepository.findById(matchId);
         if (matchOptional.isPresent()) {
             Match match = matchOptional.get();
@@ -54,6 +56,7 @@ public class MatchService {
         matchRepository.save(match);
     }
     public void removePlayerFromMatch(Long matchId, Long playerId) {
+        cacheMap.clear();
         Optional<Match> matchOptional = matchRepository.findById(matchId);
         if (matchOptional.isPresent()) {
             Match match = matchOptional.get();

@@ -35,6 +35,7 @@ public class CategoryService {
         return categoryRepository.save(category);
     }
     public void deleteCategoryById(Long categoryId) {
+        cacheMap.clear();
         Category category = categoryRepository.findById(categoryId).orElseThrow();
         for (Match match : category.getMatches()) {
             match.setCategory(null);
@@ -43,6 +44,7 @@ public class CategoryService {
         categoryRepository.deleteById(categoryId);
     }
     public void updateCategory(Long categoryId, Category updatedCategory) {
+        cacheMap.clear();
         Optional<Category> categoryOptional = categoryRepository.findById(categoryId);
         if (categoryOptional.isPresent()) {
             Category category = categoryOptional.get();
@@ -58,6 +60,7 @@ public class CategoryService {
         categoryRepository.save(category);
     }
     public void removeMatchFromCategory(Long matchId, Long categoryId) {
+        cacheMap.clear();
         Optional<Category> categoryOptional = categoryRepository.findById(categoryId);
         if (categoryOptional.isPresent()) {
             Match match = matchRepository.findById(matchId).orElseThrow();

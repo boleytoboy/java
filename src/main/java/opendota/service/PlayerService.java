@@ -47,6 +47,7 @@ public class PlayerService {
         return playerRepository.save(player);
     }
     public void deletePlayerById(Long accountId) {
+        cacheMap.clear();
         Player player = playerRepository.findById(accountId).orElseThrow();
         for (Match match : player.getMatches()) {
             match.getPlayers().remove(player);
@@ -55,6 +56,7 @@ public class PlayerService {
         playerRepository.deleteById(accountId);
     }
     public void updatePlayer(Long accountId, Player updatedPlayer) {
+        cacheMap.clear();
         Optional<Player> playerOptional = playerRepository.findById(accountId);
         if (playerOptional.isPresent()) {
             Player player = playerOptional.get();
