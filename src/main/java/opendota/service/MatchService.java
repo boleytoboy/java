@@ -7,6 +7,7 @@ import opendota.model.Match;
 import opendota.repository.MatchRepository;
 import opendota.repository.PlayerRepository;
 import org.springframework.stereotype.Service;
+
 import java.util.*;
 
 @Service
@@ -14,13 +15,14 @@ import java.util.*;
 public class MatchService {
     private final MatchRepository matchRepository;
     private final PlayerRepository playerRepository;
-    private final EntityCache<Integer,Object> cacheMap;
+    private final EntityCache<Integer, Object> cacheMap;
 
     public MatchService(MatchRepository matchRepository, PlayerRepository playerRepository, EntityCache<Integer, Object> cacheMap) {
         this.matchRepository = matchRepository;
         this.playerRepository = playerRepository;
         this.cacheMap = cacheMap;
     }
+
     public Optional<Match> findMatchById(Long matchId) {
         int hashCode = Objects.hash(matchId, 32 * 33);
         Object cachedData = cacheMap.get(hashCode);
@@ -35,16 +37,19 @@ public class MatchService {
             return match;
         }
     }
+
     public Match saveMatch(Match match) {
         cacheMap.clear();
         log.info("match info has been saved");
         return matchRepository.save(match);
     }
+
     public void deleteMatchById(Long matchId) {
         cacheMap.clear();
         log.info("information in the database has been deleted");
         matchRepository.deleteById(matchId);
     }
+
     public void updateMatch(Long matchId, Match updatedMatch) {
         cacheMap.clear();
         Optional<Match> matchOptional = matchRepository.findById(matchId);
@@ -55,6 +60,7 @@ public class MatchService {
             matchRepository.save(match);
         }
     }
+
     public void addPlayer(Long matchId, Long playerId) {
         Player player = playerRepository.findById(playerId).orElseThrow();
         Match match = matchRepository.findById(matchId).orElseThrow(() -> new RuntimeException("match not found"));
@@ -63,6 +69,7 @@ public class MatchService {
         log.info("player has been placed to matches");
         matchRepository.save(match);
     }
+
     public void removePlayerFromMatch(Long matchId, Long playerId) {
         cacheMap.clear();
         Optional<Match> matchOptional = matchRepository.findById(matchId);

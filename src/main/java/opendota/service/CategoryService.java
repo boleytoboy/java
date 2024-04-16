@@ -7,6 +7,7 @@ import opendota.model.Match;
 import opendota.repository.CategoryRepository;
 import opendota.repository.MatchRepository;
 import org.springframework.stereotype.Service;
+
 import java.util.*;
 
 @Service
@@ -14,12 +15,14 @@ import java.util.*;
 public class CategoryService {
     private final CategoryRepository categoryRepository;
     private final MatchRepository matchRepository;
-    private final EntityCache<Integer,Object> cacheMap;
+    private final EntityCache<Integer, Object> cacheMap;
+
     public CategoryService(CategoryRepository categoryRepository, MatchRepository matchRepository, EntityCache<Integer, Object> cacheMap) {
         this.categoryRepository = categoryRepository;
         this.matchRepository = matchRepository;
         this.cacheMap = cacheMap;
     }
+
     public Optional<Category> findCategoryById(Long categoryId) {
         int hashCode = Objects.hash(categoryId, 33 * 34);
         Object cachedData = cacheMap.get(hashCode);
@@ -34,11 +37,13 @@ public class CategoryService {
             return category;
         }
     }
+
     public Category saveCategory(Category category) {
         cacheMap.clear();
         log.info("category info has been saved");
         return categoryRepository.save(category);
     }
+
     public void deleteCategoryById(Long categoryId) {
         cacheMap.clear();
         Category category = categoryRepository.findById(categoryId).orElseThrow();
@@ -49,6 +54,7 @@ public class CategoryService {
         matchRepository.saveAll(category.getMatches());
         categoryRepository.deleteById(categoryId);
     }
+
     public void updateCategory(Long categoryId, Category updatedCategory) {
         cacheMap.clear();
         Optional<Category> categoryOptional = categoryRepository.findById(categoryId);
@@ -59,6 +65,7 @@ public class CategoryService {
             categoryRepository.save(category);
         }
     }
+
     public void addMatch(Long matchId, Long categoryId) {
         Category category = categoryRepository.findById(categoryId).orElseThrow();
         Match match = matchRepository.findById(matchId).orElseThrow(() -> new RuntimeException("match not found"));
@@ -67,6 +74,7 @@ public class CategoryService {
         log.info("match has been placed to category");
         categoryRepository.save(category);
     }
+
     public void removeMatchFromCategory(Long matchId, Long categoryId) {
         cacheMap.clear();
         Optional<Category> categoryOptional = categoryRepository.findById(categoryId);

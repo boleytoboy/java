@@ -3,6 +3,7 @@ package opendota.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import jakarta.persistence.*;
+
 import java.util.Set;
 
 @Getter
@@ -20,7 +21,7 @@ public class Player {
     @ManyToMany(mappedBy = "players")
     private Set<Match> matches;
 
-    public void addMatch(Match match){
+    public void addMatch(Match match) {
         matches.add(match);
     }
 }

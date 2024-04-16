@@ -33,6 +33,7 @@ public class ExceptionsHandler {
         log.error("error 400");
         return new ErrorResponse("BAD REQUEST");
     }
+
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NoResourceFoundException.class)
     public ErrorResponse handlerFoundException(Exception ex) {

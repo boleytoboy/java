@@ -3,6 +3,7 @@ package opendota.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import jakarta.persistence.*;
+
 import java.util.Set;
 
 @Getter
@@ -22,7 +23,7 @@ public class Match {
     private Category category;
 
     @JsonIgnoreProperties({"matches"})
-    @ManyToMany(cascade = { CascadeType.PERSIST })
+    @ManyToMany(cascade = {CascadeType.PERSIST})
     @JoinTable(
             name = "match_player",
             joinColumns = @JoinColumn(name = "match_id"),
@@ -30,5 +31,7 @@ public class Match {
     )
     private Set<Player> players;
 
-    public void addPlayer(Player player){ players.add(player); }
+    public void addPlayer(Player player) {
+        players.add(player);
+    }
 }

@@ -32,7 +32,8 @@ public class LoggingAspect {
     }
 
     @Pointcut("execution(* opendota.service.*.*(..))")
-    public void serviceMethods() { }
+    public void serviceMethods() {
+    }
 
     @Before("serviceMethods()")
     public void logServiceMethod(JoinPoint joinPoint) {

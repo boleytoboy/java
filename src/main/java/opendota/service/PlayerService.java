@@ -7,19 +7,22 @@ import opendota.model.Player;
 import opendota.repository.MatchRepository;
 import opendota.repository.PlayerRepository;
 import org.springframework.stereotype.Service;
+
 import java.util.*;
 
 @Service
 @Slf4j
 public class PlayerService {
     private final PlayerRepository playerRepository;
-    private  final MatchRepository matchRepository;
-    private final EntityCache<Integer,Object> cacheMap;
+    private final MatchRepository matchRepository;
+    private final EntityCache<Integer, Object> cacheMap;
+
     public PlayerService(PlayerRepository playerRepository, MatchRepository matchRepository, EntityCache<Integer, Object> cacheMap) {
         this.playerRepository = playerRepository;
         this.matchRepository = matchRepository;
         this.cacheMap = cacheMap;
     }
+
     public Optional<Player> findPlayerById(Long accountId) {
         int hashCode = Objects.hash(accountId, 31 * 32);
         Object cachedData = cacheMap.get(hashCode);
@@ -34,25 +37,28 @@ public class PlayerService {
             return player;
         }
     }
+
     public List<Player> getPlayerByPrefix(String prefix) {
         int hashCode = Objects.hash(prefix, 34 * 35);
         Object cachedData = cacheMap.get(hashCode);
 
-        if(cachedData != null) {
+        if (cachedData != null) {
             log.info("player info is taken from the cache");
-            return(List<Player>) cachedData;
+            return (List<Player>) cachedData;
         } else {
             cacheMap.put(hashCode, playerRepository.findByBeginOfName(prefix));
             log.info("player info is taken from DB and placed into the cache");
             return playerRepository.findByBeginOfName(prefix);
         }
     }
+
     public Player savePlayer(Player player) {
         cacheMap.clear();
         player.setAccountId(0L);
         log.info("player info has been saved");
         return playerRepository.save(player);
     }
+
     public void deletePlayerById(Long accountId) {
         cacheMap.clear();
         Player player = playerRepository.findById(accountId).orElseThrow();
@@ -63,6 +69,7 @@ public class PlayerService {
         matchRepository.saveAll(player.getMatches());
         playerRepository.deleteById(accountId);
     }
+
     public void updatePlayer(Long accountId, Player updatedPlayer) {
         cacheMap.clear();
         Optional<Player> playerOptional = playerRepository.findById(accountId);
