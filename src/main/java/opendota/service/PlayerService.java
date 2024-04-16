@@ -1,5 +1,6 @@
 package opendota.service;
 
+import lombok.extern.slf4j.Slf4j;
 import opendota.cache.EntityCache;
 import opendota.model.Match;
 import opendota.model.Player;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
+@Slf4j
 public class PlayerService {
     private final PlayerRepository playerRepository;
     private  final MatchRepository matchRepository;
@@ -23,10 +25,12 @@ public class PlayerService {
         Object cachedData = cacheMap.get(hashCode);
 
         if (cachedData != null) {
+            log.info("player info is taken from the cache");
             return (Optional<Player>) cachedData;
         } else {
             Optional<Player> player = playerRepository.findById(accountId);
             cacheMap.put(hashCode, player);
+            log.info("player info is taken from DB and placed into the cache");
             return player;
         }
     }
@@ -35,15 +39,18 @@ public class PlayerService {
         Object cachedData = cacheMap.get(hashCode);
 
         if(cachedData != null) {
+            log.info("player info is taken from the cache");
             return(List<Player>) cachedData;
         } else {
             cacheMap.put(hashCode, playerRepository.findByBeginOfName(prefix));
+            log.info("player info is taken from DB and placed into the cache");
             return playerRepository.findByBeginOfName(prefix);
         }
     }
     public Player savePlayer(Player player) {
         cacheMap.clear();
         player.setAccountId(0L);
+        log.info("player info has been saved");
         return playerRepository.save(player);
     }
     public void deletePlayerById(Long accountId) {
@@ -52,6 +59,7 @@ public class PlayerService {
         for (Match match : player.getMatches()) {
             match.getPlayers().remove(player);
         }
+        log.info("information in the database has been deleted");
         matchRepository.saveAll(player.getMatches());
         playerRepository.deleteById(accountId);
     }
@@ -61,6 +69,7 @@ public class PlayerService {
         if (playerOptional.isPresent()) {
             Player player = playerOptional.get();
             player.setPersonalName(updatedPlayer.getPersonalName());
+            log.info("information in the database has been updated");
             playerRepository.save(player);
         }
     }

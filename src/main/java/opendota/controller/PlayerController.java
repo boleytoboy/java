@@ -23,13 +23,14 @@ public class PlayerController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<Player> getPlayer(@PathVariable("id") Long accountId) {
-        return playerService.findPlayerById(accountId)
+         return playerService.findPlayerById(accountId)
                 .map(player -> ResponseEntity.ok().body(player))
-                .orElse(ResponseEntity.notFound().build());
+                 .orElse(ResponseEntity.notFound().build());
     }
     @GetMapping("/prefix/{prefix}")
     public List<Player> getPlayerByPrefix(@PathVariable String prefix) {
         return playerService.getPlayerByPrefix(prefix);
+
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePlayer(@PathVariable("id") Long accountId) {

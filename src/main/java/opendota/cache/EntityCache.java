@@ -21,4 +21,7 @@ public class EntityCache<K, V> {
     public void clear() {
         cacheMap.clear();
     }
+    public void remove(K key) {
+        cacheMap.remove(key);
+    }
 }
