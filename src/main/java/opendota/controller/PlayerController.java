@@ -19,10 +19,10 @@ public class PlayerController {
         this.playerService = playerService;
     }
 
-    @PostMapping
-    public ResponseEntity<Player> createPlayer(@RequestBody Player player) {
-        Player savedPlayer = playerService.savePlayer(player);
-        return new ResponseEntity<>(savedPlayer, HttpStatus.CREATED);
+    @PostMapping("/bulk")
+    public ResponseEntity<List<Player>> createPlayers(@RequestBody List<Player> players) {
+        List<Player> savedPlayers = playerService.savePlayers(players);
+        return new ResponseEntity<>(savedPlayers, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")

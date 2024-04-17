@@ -52,11 +52,13 @@ public class PlayerService {
         }
     }
 
-    public Player savePlayer(Player player) {
+    public List<Player> savePlayers(List<Player> players) {
         cacheMap.clear();
-        player.setAccountId(0L);
-        log.info("player info has been saved");
-        return playerRepository.save(player);
+        players.forEach(player -> {
+            player.setAccountId(0L);
+        });
+        log.info("players info has been saved");
+        return playerRepository.saveAll(players);
     }
 
     public void deletePlayerById(Long accountId) {
