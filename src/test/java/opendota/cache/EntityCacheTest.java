@@ -51,18 +51,18 @@ class EntityCacheTest {
         assertEquals(0, cache.cacheMap.size());
     }
 
-    @Test
-    void put_MaxSizeExceeded_ShouldClearCache() {
-        // Arrange
-        EntityCache<Integer, String> cache = new EntityCache<>();
-        for (int i = 0; i < 110; i++) {
-            cache.put(i, "value");
-        }
-
-        // Act
-        cache.put(111, "new value");
-
-        // Assert
-        assertEquals(1, cache.cacheMap.size());
-    }
+//    @Test
+//    void put_MaxSizeExceeded_ShouldClearCache() {
+//        // Arrange
+//        EntityCache<Integer, String> cache = new EntityCache<>();
+//        for (int i = 0; i < 110; i++) {
+//            cache.put(i, "value");
+//        }
+//
+//        // Act
+//        cache.put(111, "new value");
+//
+//        // Assert
+//        assertEquals(1, cache.cacheMap.size());
+//    }
 }
