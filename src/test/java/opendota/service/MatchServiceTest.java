@@ -94,9 +94,9 @@ class MatchServiceTest {
         verify(entityCache).get(2048);
         verify(category).setCategoryId(1L);
         verify(category).setMatches(isA(Set.class));
-        verify(category).setName(eq("Name"));
+        verify(category).setName("Name");
         verify(match).setCategory(isA(Category.class));
-        verify(match).setDuration(eq(1));
+        verify(match).setDuration(1);
         verify(match).setMatchId(1L);
         verify(match).setPlayers(isA(Set.class));
         assertSame(ofResult, actualFindMatchByIdResult);
@@ -137,9 +137,9 @@ class MatchServiceTest {
         verify(entityCache).put(2048, isA(Object.class));
         verify(category).setCategoryId(1L);
         verify(category).setMatches(isA(Set.class));
-        verify(category).setName(eq("Name"));
+        verify(category).setName("Name");
         verify(match).setCategory(isA(Category.class));
-        verify(match).setDuration(eq(1));
+        verify(match).setDuration(1);
         verify(match).setMatchId(1L);
         verify(match).setPlayers(isA(Set.class));
         verify(matchRepository).findById(1L);

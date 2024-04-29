@@ -72,7 +72,7 @@ class PlayerServiceTest {
         verify(entityCache).get(1984);
         verify(player).setAccountId(1L);
         verify(player).setMatches(isA(Set.class));
-        verify(player).setPersonalName(eq("Personal Name"));
+        verify(player).setPersonalName("Personal name");
         assertSame(ofResult, actualFindPlayerByIdResult);
     }
 
@@ -102,7 +102,7 @@ class PlayerServiceTest {
         verify(entityCache).put(1984, isA(Object.class));
         verify(player).setAccountId(1L);
         verify(player).setMatches(isA(Set.class));
-        verify(player).setPersonalName(eq("Personal Name"));
+        verify(player).setPersonalName("Personal name");
         verify(playerRepository).findById(1L);
         assertSame(ofResult, actualFindPlayerByIdResult);
     }
@@ -120,7 +120,7 @@ class PlayerServiceTest {
         List<Player> actualPlayerByPrefix = playerService.getPlayerByPrefix("Prefix");
 
         // Assert
-        verify(entityCache).get(eq(1345994741));
+        verify(entityCache).get(1345994741);
         assertTrue(actualPlayerByPrefix.isEmpty());
         assertSame(objectList, actualPlayerByPrefix);
     }
@@ -140,8 +140,8 @@ class PlayerServiceTest {
         List<Player> actualPlayerByPrefix = playerService.getPlayerByPrefix("Prefix");
 
         // Assert
-        verify(entityCache).get(eq(1345994741));
-        verify(entityCache).put(eq(1345994741), isA(Object.class));
+        verify(entityCache).get(1345994741);
+        verify(entityCache).put(1345994741, isA(Object.class));
         verify(playerRepository, atLeast(1)).findByBeginOfName(eq("Prefix"));
         assertTrue(actualPlayerByPrefix.isEmpty());
         assertSame(playerList, actualPlayerByPrefix);
