@@ -60,7 +60,7 @@ class PlayerServiceTest {
         doNothing().when(player).setPersonalName(Mockito.<String>any());
         player.setAccountId(1L);
         player.setMatches(new HashSet<>());
-        player.setPersonalName("Personal Name");
+        player.setPersonalName("Personal name");
         Optional.of(player);
         Optional<Object> ofResult = Optional.of("42");
         when(entityCache.get(Mockito.<Integer>any())).thenReturn(ofResult);
@@ -88,7 +88,7 @@ class PlayerServiceTest {
         doNothing().when(player).setPersonalName(Mockito.<String>any());
         player.setAccountId(1L);
         player.setMatches(new HashSet<>());
-        player.setPersonalName("Personal Name");
+        player.setPersonalName("Personal name");
         Optional<Player> ofResult = Optional.of(player);
         when(playerRepository.findById(Mockito.<Long>any())).thenReturn(ofResult);
         when(entityCache.get(Mockito.<Integer>any())).thenReturn(null);

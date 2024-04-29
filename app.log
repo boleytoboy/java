@@ -554,3 +554,10 @@
 2024-04-29 18:27:05.288 [main] ERROR o.exception.ExceptionsHandler - error 404
 2024-04-29 18:27:05.298 [main] ERROR o.exception.ExceptionsHandler - error 400
 2024-04-29 18:27:05.301 [main] ERROR o.exception.ExceptionsHandler - error 500
+2024-04-29 18:34:55.596 [main] INFO  opendota.service.CategoryService - category info is taken from DB and placed into the cache
+2024-04-29 18:34:55.786 [main] INFO  opendota.service.MatchService - match info is taken from DB and placed into the cache
+2024-04-29 18:34:55.848 [main] INFO  opendota.service.PlayerService - player info is taken from the cache
+2024-04-29 18:34:55.890 [main] INFO  opendota.service.PlayerService - player info is taken from DB and placed into the cache
+2024-04-29 18:34:55.907 [main] INFO  opendota.service.PlayerService - player info is taken from DB and placed into the cache
+2024-04-29 18:36:50.429 [main] INFO  opendota.service.PlayerService - player info is taken from the cache
+2024-04-29 18:36:50.488 [main] INFO  opendota.service.PlayerService - player info is taken from DB and placed into the cache
