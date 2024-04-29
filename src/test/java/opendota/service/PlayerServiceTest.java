@@ -35,7 +35,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ContextConfiguration(classes = {PlayerService.class})
 @ExtendWith(SpringExtension.class)
 @DisabledInAotMode
-class PlayerServiceDiffblueTest {
+class PlayerServiceTest {
     @MockBean
     private EntityCache<Integer, Object> entityCache;
 

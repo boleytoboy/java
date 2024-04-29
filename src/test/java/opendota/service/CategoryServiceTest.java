@@ -34,7 +34,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ContextConfiguration(classes = {CategoryService.class})
 @ExtendWith(SpringExtension.class)
 @DisabledInAotMode
-class CategoryServiceDiffblueTest {
+class CategoryServiceTest {
     @MockBean
     private CategoryRepository categoryRepository;
 

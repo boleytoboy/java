@@ -34,7 +34,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ContextConfiguration(classes = {MatchService.class})
 @ExtendWith(SpringExtension.class)
 @DisabledInAotMode
-class MatchServiceDiffblueTest {
+class MatchServiceTest {
     @MockBean
     private EntityCache<Integer, Object> entityCache;
 
