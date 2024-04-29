@@ -83,7 +83,7 @@ class CategoryServiceTest {
 
         // Assert
         verify(entityCache).get(2114);
-        verify(category).setCategoryId(eq(1L));
+        verify(category).setCategoryId(1L);
         verify(category).setMatches(isA(Set.class));
         verify(category).setName(eq("Name"));
         assertSame(ofResult, actualFindCategoryByIdResult);
@@ -113,10 +113,10 @@ class CategoryServiceTest {
         // Assert
         verify(entityCache).get(2114);
         verify(entityCache).put(2114, isA(Object.class));
-        verify(category).setCategoryId(eq(1L));
+        verify(category).setCategoryId(1L);
         verify(category).setMatches(isA(Set.class));
         verify(category).setName(eq("Name"));
-        verify(categoryRepository).findById(eq(1L));
+        verify(categoryRepository).findById(1L);
         assertSame(ofResult, actualFindCategoryByIdResult);
     }
 
@@ -186,8 +186,8 @@ class CategoryServiceTest {
 
         // Assert that nothing has changed
         verify(entityCache).clear();
-        verify(categoryRepository).deleteById(eq(1L));
-        verify(categoryRepository).findById(eq(1L));
+        verify(categoryRepository).deleteById(1L);
+        verify(categoryRepository).findById(1L);
         verify(matchRepository).saveAll(isA(Iterable.class));
     }
 
@@ -239,8 +239,8 @@ class CategoryServiceTest {
 
         // Assert
         verify(entityCache).clear();
-        verify(categoryRepository).deleteById(eq(1L));
-        verify(categoryRepository).findById(eq(1L));
+        verify(categoryRepository).deleteById(1L);
+        verify(categoryRepository).findById(1L);
         verify(matchRepository).saveAll(isA(Iterable.class));
     }
 
@@ -274,7 +274,7 @@ class CategoryServiceTest {
 
         // Assert
         verify(entityCache).clear();
-        verify(categoryRepository).findById(eq(1L));
+        verify(categoryRepository).findById(1L);
         verify(categoryRepository).save(isA(Category.class));
     }
 
@@ -316,7 +316,7 @@ class CategoryServiceTest {
 
         // Assert that nothing has changed
         verify(entityCache).clear();
-        verify(categoryRepository).findById(eq(1L));
+        verify(categoryRepository).findById(1L);
         assertEquals("Name", updatedCategory.getName());
         assertEquals(1L, updatedCategory.getCategoryId().longValue());
         assertTrue(updatedCategory.getMatches().isEmpty());
@@ -358,8 +358,8 @@ class CategoryServiceTest {
         categoryService.addMatch(1L, 1L);
 
         // Assert
-        verify(categoryRepository).findById(eq(1L));
-        verify(matchRepository).findById(eq(1L));
+        verify(categoryRepository).findById(1L);
+        verify(matchRepository).findById(1L);
         verify(categoryRepository).save(isA(Category.class));
     }
 
@@ -393,8 +393,8 @@ class CategoryServiceTest {
 
         // Act and Assert
         assertThrows(RuntimeException.class, () -> categoryService.addMatch(1L, 1L));
-        verify(categoryRepository).findById(eq(1L));
-        verify(matchRepository).findById(eq(1L));
+        verify(categoryRepository).findById(1L);
+        verify(matchRepository).findById(1L);
         verify(categoryRepository).save(isA(Category.class));
     }
 
@@ -415,8 +415,8 @@ class CategoryServiceTest {
 
         // Act and Assert
         assertThrows(RuntimeException.class, () -> categoryService.addMatch(1L, 1L));
-        verify(categoryRepository).findById(eq(1L));
-        verify(matchRepository).findById(eq(1L));
+        verify(categoryRepository).findById(1L);
+        verify(matchRepository).findById(1L);
     }
 
     /**
@@ -464,8 +464,8 @@ class CategoryServiceTest {
 
         // Assert
         verify(entityCache).clear();
-        verify(categoryRepository).findById(eq(1L));
-        verify(matchRepository).findById(eq(1L));
+        verify(categoryRepository).findById(1L);
+        verify(matchRepository).findById(1L);
         verify(matchRepository).save(isA(Match.class));
     }
 
@@ -512,6 +512,6 @@ class CategoryServiceTest {
 
         // Assert that nothing has changed
         verify(entityCache).clear();
-        verify(categoryRepository).findById(eq(1L));
+        verify(categoryRepository).findById(1L);
     }
 }
