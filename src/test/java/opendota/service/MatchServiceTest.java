@@ -58,7 +58,7 @@ class MatchServiceTest {
 
         // Act and Assert
         assertThrows(RuntimeException.class, () -> matchService.findMatchById(1L));
-        verify(entityCache).get(eq(2048));
+        verify(entityCache).get(2048);
     }
 
     /**
@@ -91,13 +91,13 @@ class MatchServiceTest {
         Optional<Match> actualFindMatchByIdResult = matchService.findMatchById(1L);
 
         // Assert
-        verify(entityCache).get(eq(2048));
-        verify(category).setCategoryId(eq(1L));
+        verify(entityCache).get(2048);
+        verify(category).setCategoryId(1L);
         verify(category).setMatches(isA(Set.class));
         verify(category).setName(eq("Name"));
         verify(match).setCategory(isA(Category.class));
         verify(match).setDuration(eq(1));
-        verify(match).setMatchId(eq(1L));
+        verify(match).setMatchId(1L);
         verify(match).setPlayers(isA(Set.class));
         assertSame(ofResult, actualFindMatchByIdResult);
     }
@@ -133,16 +133,16 @@ class MatchServiceTest {
         Optional<Match> actualFindMatchByIdResult = matchService.findMatchById(1L);
 
         // Assert
-        verify(entityCache).get(eq(2048));
-        verify(entityCache).put(eq(2048), isA(Object.class));
-        verify(category).setCategoryId(eq(1L));
+        verify(entityCache).get(2048);
+        verify(entityCache).put(2048, isA(Object.class));
+        verify(category).setCategoryId(1L);
         verify(category).setMatches(isA(Set.class));
         verify(category).setName(eq("Name"));
         verify(match).setCategory(isA(Category.class));
         verify(match).setDuration(eq(1));
-        verify(match).setMatchId(eq(1L));
+        verify(match).setMatchId(1L);
         verify(match).setPlayers(isA(Set.class));
-        verify(matchRepository).findById(eq(1L));
+        verify(matchRepository).findById(1L);
         assertSame(ofResult, actualFindMatchByIdResult);
     }
 
@@ -223,7 +223,7 @@ class MatchServiceTest {
 
         // Assert that nothing has changed
         verify(entityCache).clear();
-        verify(matchRepository).deleteById(eq(1L));
+        verify(matchRepository).deleteById(1L);
     }
 
     /**
@@ -287,7 +287,7 @@ class MatchServiceTest {
 
         // Assert
         verify(entityCache).clear();
-        verify(matchRepository).findById(eq(1L));
+        verify(matchRepository).findById(1L);
         verify(matchRepository).save(isA(Match.class));
     }
 
@@ -341,7 +341,7 @@ class MatchServiceTest {
 
         // Assert that nothing has changed
         verify(entityCache).clear();
-        verify(matchRepository).findById(eq(1L));
+        verify(matchRepository).findById(1L);
         assertEquals(1, updatedMatch.getDuration().intValue());
         assertEquals(1L, updatedMatch.getCategory().getCategoryId().longValue());
         assertEquals(1L, updatedMatch.getMatchId().longValue());
@@ -390,8 +390,8 @@ class MatchServiceTest {
         matchService.addPlayer(1L, 1L);
 
         // Assert
-        verify(matchRepository).findById(eq(1L));
-        verify(playerRepository).findById(eq(1L));
+        verify(matchRepository).findById(1L);
+        verify(playerRepository).findById(1L);
         verify(matchRepository).save(isA(Match.class));
     }
 
@@ -425,8 +425,8 @@ class MatchServiceTest {
 
         // Act and Assert
         assertThrows(RuntimeException.class, () -> matchService.addPlayer(1L, 1L));
-        verify(matchRepository).findById(eq(1L));
-        verify(playerRepository).findById(eq(1L));
+        verify(matchRepository).findById(1L);
+        verify(playerRepository).findById(1L);
         verify(matchRepository).save(isA(Match.class));
     }
 
@@ -448,8 +448,8 @@ class MatchServiceTest {
 
         // Act and Assert
         assertThrows(RuntimeException.class, () -> matchService.addPlayer(1L, 1L));
-        verify(matchRepository).findById(eq(1L));
-        verify(playerRepository).findById(eq(1L));
+        verify(matchRepository).findById(1L);
+        verify(playerRepository).findById(1L);
     }
 
     /**
@@ -489,7 +489,7 @@ class MatchServiceTest {
 
         // Assert
         verify(entityCache).clear();
-        verify(matchRepository).findById(eq(1L));
+        verify(matchRepository).findById(1L);
         verify(matchRepository).save(isA(Match.class));
     }
 
@@ -551,7 +551,7 @@ class MatchServiceTest {
 
         // Assert
         verify(entityCache).clear();
-        verify(matchRepository).findById(eq(1L));
+        verify(matchRepository).findById(1L);
         verify(matchRepository).save(isA(Match.class));
     }
 
@@ -606,7 +606,7 @@ class MatchServiceTest {
 
         // Assert
         verify(entityCache).clear();
-        verify(matchRepository).findById(eq(1L));
+        verify(matchRepository).findById(1L);
         verify(matchRepository).save(isA(Match.class));
     }
 
@@ -625,6 +625,6 @@ class MatchServiceTest {
 
         // Assert that nothing has changed
         verify(entityCache).clear();
-        verify(matchRepository).findById(eq(1L));
+        verify(matchRepository).findById(1L);
     }
 }

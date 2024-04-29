@@ -69,8 +69,8 @@ class PlayerServiceTest {
         Optional<Player> actualFindPlayerByIdResult = playerService.findPlayerById(1L);
 
         // Assert
-        verify(entityCache).get(eq(1984));
-        verify(player).setAccountId(eq(1L));
+        verify(entityCache).get(1984);
+        verify(player).setAccountId(1L);
         verify(player).setMatches(isA(Set.class));
         verify(player).setPersonalName(eq("Personal Name"));
         assertSame(ofResult, actualFindPlayerByIdResult);
@@ -98,12 +98,12 @@ class PlayerServiceTest {
         Optional<Player> actualFindPlayerByIdResult = playerService.findPlayerById(1L);
 
         // Assert
-        verify(entityCache).get(eq(1984));
-        verify(entityCache).put(eq(1984), isA(Object.class));
-        verify(player).setAccountId(eq(1L));
+        verify(entityCache).get(1984);
+        verify(entityCache).put(1984, isA(Object.class));
+        verify(player).setAccountId(1L);
         verify(player).setMatches(isA(Set.class));
         verify(player).setPersonalName(eq("Personal Name"));
-        verify(playerRepository).findById(eq(1L));
+        verify(playerRepository).findById(1L);
         assertSame(ofResult, actualFindPlayerByIdResult);
     }
 
@@ -253,8 +253,8 @@ class PlayerServiceTest {
 
         // Assert that nothing has changed
         verify(entityCache).clear();
-        verify(playerRepository).deleteById(eq(1L));
-        verify(playerRepository).findById(eq(1L));
+        verify(playerRepository).deleteById(1L);
+        verify(playerRepository).findById(1L);
         verify(matchRepository).saveAll(isA(Iterable.class));
     }
 
@@ -293,8 +293,8 @@ class PlayerServiceTest {
 
         // Assert
         verify(entityCache).clear();
-        verify(playerRepository).deleteById(eq(1L));
-        verify(playerRepository).findById(eq(1L));
+        verify(playerRepository).deleteById(1L);
+        verify(playerRepository).findById(1L);
         verify(matchRepository).saveAll(isA(Iterable.class));
     }
 
@@ -328,7 +328,7 @@ class PlayerServiceTest {
 
         // Assert
         verify(entityCache).clear();
-        verify(playerRepository).findById(eq(1L));
+        verify(playerRepository).findById(1L);
         verify(playerRepository).save(isA(Player.class));
     }
 
@@ -352,7 +352,7 @@ class PlayerServiceTest {
 
         // Assert that nothing has changed
         verify(entityCache).clear();
-        verify(playerRepository).findById(eq(1L));
+        verify(playerRepository).findById(1L);
         assertEquals("Personal Name", updatedPlayer.getPersonalName());
         assertEquals(1L, updatedPlayer.getAccountId().longValue());
         assertTrue(updatedPlayer.getMatches().isEmpty());
