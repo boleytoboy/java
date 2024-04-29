@@ -99,7 +99,7 @@ class PlayerServiceTest {
 
         // Assert
         verify(entityCache).get(1984);
-        verify(entityCache).put(1984, isA(Object.class));
+        verify(entityCache).put(eq(1984), isA(Object.class));
         verify(player).setAccountId(1L);
         verify(player).setMatches(isA(Set.class));
         verify(player).setPersonalName("Personal name");
@@ -141,7 +141,7 @@ class PlayerServiceTest {
 
         // Assert
         verify(entityCache).get(1345994741);
-        verify(entityCache).put(1345994741, isA(Object.class));
+        verify(entityCache).put(eq(1345994741), isA(Object.class));
         verify(playerRepository, atLeast(1)).findByBeginOfName("Prefix");
         assertTrue(actualPlayerByPrefix.isEmpty());
         assertSame(playerList, actualPlayerByPrefix);

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
@@ -111,7 +112,7 @@ class CategoryServiceTest {
 
         // Assert
         verify(entityCache).get(2114);
-        verify(entityCache).put(2114, isA(Object.class));
+        verify(entityCache).put(eq(2114), isA(Object.class));
         verify(category).setCategoryId(1L);
         verify(category).setMatches(isA(Set.class));
         verify(category).setName("Name");

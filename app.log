@@ -521,3 +521,36 @@
 2024-04-29 18:23:01.358 [main] INFO  opendota.service.MatchService - match info has been saved
 2024-04-29 18:23:01.364 [main] INFO  opendota.service.MatchService - information in the database has been deleted
 2024-04-29 18:23:01.370 [main] INFO  opendota.service.MatchService - player has been removed from matches
+2024-04-29 18:27:04.596 [main] INFO  opendota.service.MatchService - information in the database has been updated
+2024-04-29 18:27:04.710 [main] INFO  opendota.service.MatchService - match info is taken from the cache
+2024-04-29 18:27:04.726 [main] INFO  opendota.service.MatchService - match info is taken from DB and placed into the cache
+2024-04-29 18:27:04.800 [main] INFO  opendota.service.MatchService - player has been removed from matches
+2024-04-29 18:27:04.808 [main] INFO  opendota.service.MatchService - player has been removed from matches
+2024-04-29 18:27:04.824 [main] INFO  opendota.service.MatchService - player has been placed to matches
+2024-04-29 18:27:04.835 [main] INFO  opendota.service.MatchService - player has been placed to matches
+2024-04-29 18:27:04.854 [main] INFO  opendota.service.MatchService - match info has been saved
+2024-04-29 18:27:04.859 [main] INFO  opendota.service.MatchService - information in the database has been deleted
+2024-04-29 18:27:04.866 [main] INFO  opendota.service.MatchService - player has been removed from matches
+2024-04-29 18:27:04.905 [main] INFO  opendota.service.PlayerService - information in the database has been deleted
+2024-04-29 18:27:04.912 [main] INFO  opendota.service.PlayerService - players info has been saved
+2024-04-29 18:27:04.918 [main] INFO  opendota.service.PlayerService - players info has been saved
+2024-04-29 18:27:04.923 [main] INFO  opendota.service.PlayerService - player info is taken from the cache
+2024-04-29 18:27:04.929 [main] INFO  opendota.service.PlayerService - information in the database has been deleted
+2024-04-29 18:27:04.936 [main] INFO  opendota.service.PlayerService - players info has been saved
+2024-04-29 18:27:04.972 [main] INFO  opendota.service.PlayerService - player info is taken from the cache
+2024-04-29 18:27:05.000 [main] INFO  opendota.service.PlayerService - information in the database has been updated
+2024-04-29 18:27:05.007 [main] INFO  opendota.service.PlayerService - player info is taken from DB and placed into the cache
+2024-04-29 18:27:05.016 [main] INFO  opendota.service.PlayerService - player info is taken from DB and placed into the cache
+2024-04-29 18:27:05.135 [main] INFO  opendota.service.CategoryService - information in the database has been deleted
+2024-04-29 18:27:05.155 [main] INFO  opendota.service.CategoryService - match has been placed to category
+2024-04-29 18:27:05.160 [main] INFO  opendota.service.CategoryService - information in the database has been updated
+2024-04-29 18:27:05.166 [main] INFO  opendota.service.CategoryService - match has been placed to category
+2024-04-29 18:27:05.179 [main] INFO  opendota.service.CategoryService - category info is taken from the cache
+2024-04-29 18:27:05.185 [main] INFO  opendota.service.CategoryService - category info is taken from DB and placed into the cache
+2024-04-29 18:27:05.191 [main] INFO  opendota.service.CategoryService - category info has been saved
+2024-04-29 18:27:05.201 [main] INFO  opendota.service.CategoryService - information in the database has been deleted
+2024-04-29 18:27:05.207 [main] INFO  opendota.service.CategoryService - match has been removed from category
+2024-04-29 18:27:05.283 [main] ERROR o.exception.ExceptionsHandler - error 400
+2024-04-29 18:27:05.288 [main] ERROR o.exception.ExceptionsHandler - error 404
+2024-04-29 18:27:05.298 [main] ERROR o.exception.ExceptionsHandler - error 400
+2024-04-29 18:27:05.301 [main] ERROR o.exception.ExceptionsHandler - error 500
