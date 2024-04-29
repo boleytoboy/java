@@ -511,3 +511,13 @@
 2024-04-29 18:01:34.071 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-04-29 18:01:34.074 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2024-04-29 18:01:34.079 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-04-29 18:23:01.126 [main] INFO  opendota.service.MatchService - information in the database has been updated
+2024-04-29 18:23:01.239 [main] INFO  opendota.service.MatchService - match info is taken from the cache
+2024-04-29 18:23:01.251 [main] INFO  opendota.service.MatchService - match info is taken from DB and placed into the cache
+2024-04-29 18:23:01.315 [main] INFO  opendota.service.MatchService - player has been removed from matches
+2024-04-29 18:23:01.323 [main] INFO  opendota.service.MatchService - player has been removed from matches
+2024-04-29 18:23:01.336 [main] INFO  opendota.service.MatchService - player has been placed to matches
+2024-04-29 18:23:01.343 [main] INFO  opendota.service.MatchService - player has been placed to matches
+2024-04-29 18:23:01.358 [main] INFO  opendota.service.MatchService - match info has been saved
+2024-04-29 18:23:01.364 [main] INFO  opendota.service.MatchService - information in the database has been deleted
+2024-04-29 18:23:01.370 [main] INFO  opendota.service.MatchService - player has been removed from matches
