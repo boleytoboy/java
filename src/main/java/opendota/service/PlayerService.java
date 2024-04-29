@@ -54,9 +54,9 @@ public class PlayerService {
 
     public List<Player> savePlayers(List<Player> players) {
         cacheMap.clear();
-        players.forEach(player -> {
-            player.setAccountId(0L);
-        });
+        players.forEach(player ->
+            player.setAccountId(0L)
+        );
         log.info("players info has been saved");
         return playerRepository.saveAll(players);
     }
