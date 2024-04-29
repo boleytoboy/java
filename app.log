@@ -470,3 +470,44 @@
 2024-04-29 16:35:50.057 [main] ERROR o.exception.ExceptionsHandler - error 404
 2024-04-29 16:35:50.074 [main] ERROR o.exception.ExceptionsHandler - error 400
 2024-04-29 16:35:50.078 [main] ERROR o.exception.ExceptionsHandler - error 500
+2024-04-29 17:56:28.006 [main] INFO  opendota.OpenDotaApiApplication - Starting OpenDotaApiApplication using Java 21.0.2 with PID 17964 (D:\java\target\classes started by bonda in D:\java)
+2024-04-29 17:56:28.009 [main] INFO  opendota.OpenDotaApiApplication - No active profile set, falling back to 1 default profile: "default"
+2024-04-29 17:56:28.955 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-29 17:56:29.028 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 64 ms. Found 3 JPA repository interfaces.
+2024-04-29 17:56:29.989 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-04-29 17:56:30.002 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-29 17:56:30.005 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-04-29 17:56:30.006 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-29 17:56:30.111 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-04-29 17:56:30.112 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2027 ms
+2024-04-29 17:56:30.365 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-29 17:56:30.442 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-29 17:56:30.480 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-04-29 17:56:30.801 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-29 17:56:30.833 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-04-29 17:56:31.169 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@67d5ac2f
+2024-04-29 17:56:31.171 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-04-29 17:56:32.836 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-29 17:56:33.475 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29 17:56:34.096 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-29 17:56:34.813 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-29 17:56:35.876 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-04-29 17:56:35.898 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2024-04-29 17:56:35.908 [main] INFO  opendota.OpenDotaApiApplication - Started OpenDotaApiApplication in 8.331 seconds (process running for 9.033)
+2024-04-29 17:57:21.873 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-29 17:57:21.873 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-04-29 17:57:21.874 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-04-29 17:57:22.729 [http-nio-8080-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 474 ms
+2024-04-29 17:59:28.001 [http-nio-8080-exec-6] INFO  opendota.aspects.LoggingAspect - Service method invoked - Class: opendota.service.PlayerService, Method: savePlayers, Args: [[opendota.model.Player@6d71b513, opendota.model.Player@6faaa3b3]]
+2024-04-29 17:59:28.002 [http-nio-8080-exec-6] INFO  opendota.service.PlayerService - players info has been saved
+2024-04-29 17:59:36.204 [http-nio-8080-exec-8] INFO  opendota.aspects.LoggingAspect - Service method invoked - Class: opendota.service.PlayerService, Method: findPlayerById, Args: [702]
+2024-04-29 17:59:36.204 [http-nio-8080-exec-8] INFO  opendota.aspects.LoggingAspect - Cache get method invoked: get
+2024-04-29 17:59:36.227 [http-nio-8080-exec-8] INFO  opendota.aspects.LoggingAspect - Cache put method invoked: put
+2024-04-29 17:59:36.228 [http-nio-8080-exec-8] INFO  opendota.service.PlayerService - player info is taken from DB and placed into the cache
+2024-04-29 17:59:39.054 [http-nio-8080-exec-7] INFO  opendota.aspects.LoggingAspect - Service method invoked - Class: opendota.service.PlayerService, Method: findPlayerById, Args: [703]
+2024-04-29 17:59:39.054 [http-nio-8080-exec-7] INFO  opendota.aspects.LoggingAspect - Cache get method invoked: get
+2024-04-29 17:59:39.058 [http-nio-8080-exec-7] INFO  opendota.aspects.LoggingAspect - Cache put method invoked: put
+2024-04-29 17:59:39.058 [http-nio-8080-exec-7] INFO  opendota.service.PlayerService - player info is taken from DB and placed into the cache
+2024-04-29 18:01:34.071 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-29 18:01:34.074 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-04-29 18:01:34.079 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

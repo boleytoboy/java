@@ -58,7 +58,7 @@ class CategoryServiceTest {
 
         // Act and Assert
         assertThrows(RuntimeException.class, () -> categoryService.findCategoryById(1L));
-        verify(entityCache).get(eq(2114));
+        verify(entityCache).get(2114);
     }
 
     /**
@@ -82,7 +82,7 @@ class CategoryServiceTest {
         Optional<Category> actualFindCategoryByIdResult = categoryService.findCategoryById(1L);
 
         // Assert
-        verify(entityCache).get(eq(2114));
+        verify(entityCache).get(2114);
         verify(category).setCategoryId(eq(1L));
         verify(category).setMatches(isA(Set.class));
         verify(category).setName(eq("Name"));
@@ -111,8 +111,8 @@ class CategoryServiceTest {
         Optional<Category> actualFindCategoryByIdResult = categoryService.findCategoryById(1L);
 
         // Assert
-        verify(entityCache).get(eq(2114));
-        verify(entityCache).put(eq(2114), isA(Object.class));
+        verify(entityCache).get(2114);
+        verify(entityCache).put(2114, isA(Object.class));
         verify(category).setCategoryId(eq(1L));
         verify(category).setMatches(isA(Set.class));
         verify(category).setName(eq("Name"));
